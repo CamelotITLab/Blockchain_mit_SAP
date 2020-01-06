@@ -6,7 +6,7 @@ Dies sind die Dateien für das EnergyMarket-Beispiel auf Basis von Hyperledger F
 
 Es setzt sich aus den folgenden Bestandteilen zusammen:
 
-- Programmierung für die Hyperledger-Fabric-Blockchain in Form von **Chaincode**,
+- Programmierung für die Hyperledger-Fabric-Blockchain in Form von **Chaincode**
 - Node.js-basierte **Middleware** zur Kommunikation zwischen Frontend und Backend (der Blockchain)
 - SAPUI5-basiertes **Frontend** zur Darstellung im Webbrowser
 
