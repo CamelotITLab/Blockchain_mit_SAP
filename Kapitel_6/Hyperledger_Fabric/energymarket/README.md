@@ -13,7 +13,7 @@ Es setzt sich aus den folgenden Bestandteilen zusammen:
 ## Installation
 Jeder der drei Bestandteile ist ein separates Projekt und muss individuell installiert werden: 
 1) Der *chaincode* muss in die Blockchain hochgeladen und aktiviert werden.
-2) Die *middleware* muss als Node.js--Projekt gestartet werden.
+2) Die *middleware* muss als Node.js-Projekt gestartet werden.
 3) Das *frontend* muss auf die Middleware zugreifen können, um mit der Blockchain zu kommunizieren.
 
 Danach müssen Middleware und Blockchain mit einer Destination miteinander verbunden werden. Ebenso müssen Frontend und Middleware auf diese Weise verbunden werden.
