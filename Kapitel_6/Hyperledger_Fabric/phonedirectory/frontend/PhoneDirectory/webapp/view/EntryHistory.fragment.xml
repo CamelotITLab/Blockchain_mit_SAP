@@ -1,0 +1,42 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc"
+	xmlns:html="http://www.w3.org/1999/xhtml" xmlns:l="sap.ui.layout" xmlns:com="sap.ui.commons">
+	<Dialog title="{i18n>entryHistoryFormTitle}">
+		<content>
+			<Table noDataText="{i18n>noEntriesText}" growing="true" items="{ path: '/', sorter: { path: 'unixTimestamp', descending: true } }">
+				<columns>
+					<Column minScreenWidth="Tablet" hAlign="Center">
+						<Text text="{i18n>timestamp}"/>
+					</Column>
+					<Column minScreenWidth="Tablet" hAlign="Center">
+						<Text text="{i18n>firstName}"/>
+					</Column>
+					<Column minScreenWidth="Tablet" hAlign="Center">
+						<Text text="{i18n>lastName}"/>
+					</Column>
+					<Column minScreenWidth="Tablet" hAlign="Center">
+						<Text text="{i18n>address}"/>
+					</Column>
+					<Column minScreenWidth="Tablet" hAlign="Center">
+						<Text text="{i18n>phoneNumber}"/>
+					</Column>
+				</columns>
+				<items>
+					<ColumnListItem>
+						<cells>
+							<Text text="{timestamp}"/>
+							<Text text="{firstName}"/>
+							<Text text="{lastName}"/>
+							<Text text="{address}"/>
+							<Text text="{phoneNumber}"/>
+						</cells>
+					</ColumnListItem>
+				</items>
+			</Table>
+		</content>
+		<beginButton/>
+		<buttons>
+			<Button text="{i18n>btnClose}" type="Emphasized" press="onBtnCloseHistoryDialog"/>
+		</buttons>
+		<endButton/>
+	</Dialog>
+</core:FragmentDefinition>

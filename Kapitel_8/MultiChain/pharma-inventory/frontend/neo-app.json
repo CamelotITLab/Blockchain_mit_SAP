@@ -1,0 +1,24 @@
+{
+  "welcomeFile": "/webapp/index.html",
+  "routes": [
+    {
+      "path": "/resources",
+      "target": {
+        "type": "service",
+        "name": "sapui5",
+        "entryPath": "/resources"
+      },
+      "description": "SAPUI5 Resources"
+    },
+    {
+      "path": "/multichain",
+      "target": {
+        "type": "destination",
+        "name": "multichain"
+      },
+      "description": "MultiChain API"
+    }
+  ],
+  "headerWhiteList": ["apikey"],
+  "sendWelcomeFileRedirect": true
+}

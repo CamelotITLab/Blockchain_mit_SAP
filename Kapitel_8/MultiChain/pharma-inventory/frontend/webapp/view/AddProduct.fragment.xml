@@ -1,0 +1,28 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc"
+	xmlns:html="http://www.w3.org/1999/xhtml" xmlns:l="sap.ui.layout" xmlns:com="sap.ui.commons">
+	<Dialog title="{i18n>addProductFormTitle}">
+		<l:Grid defaultSpan="L12 M12 S12" width="auto">
+			<l:content>
+				<f:SimpleForm minWidth="1024" maxContainerCols="2" editable="false" layout="ResponsiveGridLayout" labelSpanL="3" labelSpanM="3"
+					emptySpanL="4" emptySpanM="4" columnsL="2" columnsM="2">
+					<f:content>
+						<VBox>
+							<Label text="{i18n>productName}" textAlign="Begin"/>
+							<Input value="{/product/productName}" class="sapUiSmallMarginBottom" type="Text" required="true"/>
+							<Label text="{i18n>productionDate}" textAlign="Begin"/>
+							<DatePicker value="{path:'/product/productionDate', type:'sap.ui.model.type.Date', formatOptions: { style: 'medium', strictParsing: true}}"
+								class="sapUiSmallMarginBottom" required="true"/>
+							<Label text="{i18n>expiryDate}" textAlign="Begin"/>
+							<DatePicker value="{path:'/product/expiryDate', type:'sap.ui.model.type.Date', formatOptions: { style: 'medium', strictParsing: true}}"
+								required="true"/>
+						</VBox>
+					</f:content>
+				</f:SimpleForm>
+			</l:content>
+		</l:Grid>
+		<buttons>
+			<Button text="{i18n>btnAdd}" type="Accept" press="onBtnAddProduct"/>
+			<Button text="{i18n>btnCancel}" type="Reject" press="onBtnCancelAddProduct"/>
+		</buttons>
+	</Dialog>
+</core:FragmentDefinition>

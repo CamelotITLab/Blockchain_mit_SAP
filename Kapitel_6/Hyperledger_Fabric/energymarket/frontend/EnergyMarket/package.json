@@ -1,0 +1,9 @@
+{
+  "name": "EnergyMarket",
+  "version": "0.0.1",
+  "description": "Hyperledger Fabric Energy Market",
+  "private": true,
+  "devDependencies": {
+    "@sap/grunt-sapui5-bestpractice-build": "1.3.65"
+  }
+}

@@ -1,0 +1,31 @@
+[
+	{
+		"userId": "fredrika93ozumv",
+		"userName": "Fredrika Riley",
+		"openingBalance": 50000,
+		"address": "1FdJ7JFdwcnstM8zwGgQkAx9SQVR6FJnNPqyxH",
+		"pubkey": "030011d430958661c39a4c95927f6a348b61c6af54a6285e7d68a6f9f21a412922",
+		"privkey": "VEY9nFQwGoXXJAk7CrH3B1fchdyKA9Fvo9bkDoLVhNXVescwDoAza13z"
+	}, {
+		"userId": "charliez170b9ek",
+		"userName": "Charlie Sanchez",
+		"openingBalance": 50000,
+		"address": "18xhDHnyBrG4m6Rc57exwpXLwNqNirtGpr37zd",
+		"pubkey": "020a6f6e106e206e7dabc33c68cd11e49df67d89fe6218d410df6c4ac5b4a7c22d",
+		"privkey": "V8tkntxhewDf3WifgvrHhpeV88brtis4B2a8Z4jnAV4Cd9R8Nx9eZXtM"
+	}, {
+		"userId": "thomasina4e_bgaf",
+		"userName": "Thomasina Martin Mills",
+		"openingBalance": 50000,
+		"address": "1N51dHcWtunziuznsco1wrp6QLGYpD4aqhwyTC",
+		"pubkey": "036f74e5436d85da930680a293e06208f48cdf982d3263d966ddd18e1a7e981bcb",
+		"privkey": "VAhqiU1Xo1CLtD2MqEx7PjU2MJXFxihV7sERo8asPdQzv3KcQct28RBX"
+	}, {
+		"userId": "louiszx1fn0q2rc",
+		"userName": "Louis Taylor",
+		"openingBalance": 50000,
+		"address": "1ZuZeYxsEMkenL8U6zZ1fQrGFDyJxu8B5p1ckL",
+		"pubkey": "024bdd45b746aec38f094a68a1f2ab165c76741fe8261e54494fb2cce5aa34aa51",
+		"privkey": "VHodPnDieu7du3GoELLQBmj3iR6QuDmUKfcYVm3Ds9tNqyGPghGkADiz"
+	}
+]

@@ -1,0 +1,50 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" controllerName="PharmaInventory.controller.PharmaInventory"
+	xmlns:html="http://www.w3.org/1999/xhtml">
+	<App id="app">
+		<Page title="{i18n>appTitle}" class="sapUiContentPadding">
+			<content>
+				<Table id="products_table" mode="SingleSelectLeft" selectionChange="onAppSelectionChange" noDataText="{i18n>noProductsText}" growing="true"
+					items="{ path: '/', sorter: { path: 'productName' } }">
+					<headerToolbar>
+						<Toolbar>
+							<SearchField width="25%" search="displayProducts"/>
+							<Button text="{i18n>btnDisplayAllProducts}" type="Emphasized" icon="sap-icon://list" press="displayAllProducts"/>
+							<ToolbarSpacer/>
+							<Button text="{i18n>btnChangeAvailability}" type="Accept" icon="sap-icon://request" press="changeAvailability"/>
+							<Button text="{i18n>btnAddProduct}" type="Accept" icon="sap-icon://add" press="openAddProductDialog"/>
+						</Toolbar>
+					</headerToolbar>
+					<columns>
+						<Column minScreenWidth="Tablet" hAlign="Center">
+							<Text text="{i18n>productID}"/>
+						</Column>
+						<Column minScreenWidth="Tablet" hAlign="Center">
+							<Text text="{i18n>productName}"/>
+						</Column>
+						<Column minScreenWidth="Tablet" hAlign="Center">
+							<Text text="{i18n>productionDate}"/>
+						</Column>
+						<Column minScreenWidth="Tablet" hAlign="Center">
+							<Text text="{i18n>expiryDate}"/>
+						</Column>
+						<Column minScreenWidth="Tablet" hAlign="Center">
+							<Text text="{i18n>available}"/>
+						</Column>
+					</columns>
+					<items>
+						<ColumnListItem>
+							<cells>
+								<Text text="{productID}"/>
+								<Text text="{productName}"/>
+								<Text text="{formattedProductionDate}"/>
+								<Text text="{formattedExpiryDate}"/>
+								<ObjectStatus text="{path:'available', formatter:'.formatProductAvailable'}"
+									state="{path:'available', formatter:'.formatProductAvailableState'}"/>
+							</cells>
+						</ColumnListItem>
+					</items>
+				</Table>
+			</content>
+		</Page>
+	</App>
+</mvc:View>

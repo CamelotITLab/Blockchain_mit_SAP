@@ -1,0 +1,174 @@
+swagger: "2.0"
+
+info:
+  description: "Hypertrust Energy Market"
+  version: "1.0"
+  title: "Enery Market"
+
+consumes:
+  - application/x-www-form-urlencoded
+produces:
+  - application/json
+
+parameters:
+  product_id: 
+      name: product_id
+      in: formData
+      description: Product ID
+      required: true
+      type: string
+      maxLength: 20
+
+  product_id_get: 
+      name: product_id_get
+      in: path
+      description: Product ID
+      required: true
+      type: string
+      maxLength: 20
+
+  product_name: 
+      name: product_name
+      in: formData
+      description: Product Name
+      required: true
+      type: string
+      maxLength: 20
+  
+  description: 
+      name: description
+      in: formData
+      required: true
+      description: Product Description
+      type: string
+      maxLength: 120
+
+  offeror_id: 
+      name: offeror_id
+      in: formData
+      required: true
+      description: Offerr ID
+      type: string
+      maxLength: 30
+
+  buyer_id: 
+      name: buyer_id
+      in: formData
+      required: true
+      description: Buyer ID
+      type: string
+      maxLength: 30
+
+  price: 
+      name: price
+      in: formData
+      required: true
+      description: Product Price
+      type: string
+      maxLength: 10
+
+  query_string: 
+      name: query_string
+      in: path
+      description: query string
+      required: true
+      type: string
+      maxLength: 200
+
+
+paths:
+
+
+  /registerProductOffering:
+  
+    post:
+        operationId: registerProductOffering
+        summary: Register Product offer by offerer
+        parameters:
+        - $ref: '#/parameters/product_name'
+        - $ref: '#/parameters/description'
+        - $ref: '#/parameters/offeror_id'
+        - $ref: '#/parameters/price'
+        responses:
+          200:
+            description: OK
+            schema:
+              type: object
+              properties:
+                text: 
+                  type: string
+          400:
+            description: Error
+
+  /getProductOfferings/{query_string}:
+
+    get:
+      operationId: getProductOfferings
+      summary: Get Product offerings using query string
+      parameters:
+      - $ref: '#/parameters/query_string'
+      responses:
+        200:
+          description: OK
+          schema:
+            type: object
+            properties:
+              text: 
+                type: string
+        400:
+          description: Error
+
+  /getProductOfferingById/{product_id_get}:
+
+    get:
+      operationId: getProductOfferingById
+      summary: Get Product offerings using product id
+      parameters:
+      - $ref: '#/parameters/product_id_get'
+      responses:
+        200:
+          description: OK
+          schema:
+            type: object
+            properties:
+              text: 
+                type: string
+        400:
+          description: Error
+
+  /deleteProductOfferingById/{product_id_get}:
+
+    delete:
+      operationId: deleteProductOfferingById
+      summary: Delete Product offerings using product id
+      parameters:
+      - $ref: '#/parameters/product_id_get'
+      responses:
+        200:
+          description: OK
+          schema:
+            type: object
+            properties:
+              text: 
+                type: string
+        400:
+          description: Error
+
+  /purchaseProduct:
+  
+    post:
+        operationId: purchaseProduct
+        summary: Purchase Product from E-Market
+        parameters:
+        - $ref: '#/parameters/product_id'
+        - $ref: '#/parameters/buyer_id'
+        responses:
+          200:
+            description: OK
+            schema:
+              type: object
+              properties:
+                text: 
+                  type: string
+          400:
+            description: Error

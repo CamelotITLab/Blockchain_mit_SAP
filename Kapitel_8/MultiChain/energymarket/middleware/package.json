@@ -1,0 +1,23 @@
+{
+  "dependencies": {
+  	"cfenv": "*",
+  	"request": "^2.83.0"
+  },
+  "description": "my description",
+  "devDependencies": {
+    "jest": "^23.6.0",
+    "jest-junit": "^5.2.0"
+  },
+  "files": [],
+  "main": "index.js",
+  "name": "EnergyMarket-middleware",
+  "scripts": {
+    "test": "node node_modules/jest/bin/jest --config jest.json",
+    "test-coverage": "node node_modules/jest/bin/jest --coverage --config jest.json",
+    "start": "node index.js"
+  },
+  "engines": {
+    "node": "8.x"
+  },
+  "version": "1.0.0"
+}

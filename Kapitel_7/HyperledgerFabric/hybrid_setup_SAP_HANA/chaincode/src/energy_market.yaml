@@ -1,0 +1,329 @@
+swagger: "2.0"
+
+info:
+  description: "Hypertrust Energy Market"
+  version: "1.0"
+  title: "Enery Market"
+
+consumes:
+  - application/x-www-form-urlencoded
+produces:
+  - application/json
+
+parameters:
+  id:
+    name: id
+    in: path
+    description: ID of the message
+    required: true
+    type: string
+    maxLength: 20
+
+  text:
+    name: text
+    in: formData
+    description: The text of the message
+    required: true
+    type: string
+    maxLength: 255
+    
+  product_id: 
+      name: product_id
+      in: formData
+      description: Product ID
+      required: true
+      type: string
+      maxLength: 20
+
+  product_id_get: 
+      name: product_id_get
+      in: path
+      description: Product ID
+      required: true
+      type: string
+      maxLength: 20
+
+  product_name: 
+      name: product_name
+      in: formData
+      description: Product Name
+      required: true
+      type: string
+      maxLength: 20
+  
+  description: 
+      name: description
+      in: formData
+      required: true
+      description: Product Description
+      type: string
+      maxLength: 120
+
+  offeror_id: 
+      name: offeror_id
+      in: formData
+      required: true
+      description: Offerr ID
+      type: string
+      maxLength: 30
+
+  buyer_id: 
+      name: buyer_id
+      in: formData
+      required: true
+      description: Buyer ID
+      type: string
+      maxLength: 30
+
+  price: 
+      name: price
+      in: formData
+      required: true
+      description: Product Price
+      type: string
+      maxLength: 10
+
+  query_string: 
+      name: query_string
+      in: path
+      description: query string
+      required: true
+      type: string
+      maxLength: 200
+
+
+paths:
+
+
+  /registerProductOffering:
+  
+    post:
+        operationId: registerProductOffering
+        summary: Register Product offer by offerer
+        parameters:
+        - $ref: '#/parameters/product_name'
+        - $ref: '#/parameters/description'
+        - $ref: '#/parameters/offeror_id'
+        - $ref: '#/parameters/price'
+        responses:
+          200:
+            description: OK
+            schema:
+              type: object
+              properties:
+                text: 
+                  type: string
+          400:
+            description: Error
+
+  /getProductOfferings/{query_string}:
+
+    get:
+      operationId: getProductOfferings
+      summary: Get Product offerings using query string
+      parameters:
+      - $ref: '#/parameters/query_string'
+      responses:
+        200:
+          description: OK
+          schema:
+            type: object
+            properties:
+              text: 
+                type: string
+        400:
+          description: Error
+
+  /getProductOfferingById/{product_id_get}:
+
+    get:
+      operationId: getProductOfferingById
+      summary: Get Product offerings using product id
+      parameters:
+      - $ref: '#/parameters/product_id_get'
+      responses:
+        200:
+          description: OK
+          schema:
+            type: object
+            properties:
+              text: 
+                type: string
+        400:
+          description: Error
+
+  /deleteProductOfferingById/{product_id_get}:
+
+    delete:
+      operationId: deleteProductOfferingById
+      summary: Delete Product offerings using product id
+      parameters:
+      - $ref: '#/parameters/product_id_get'
+      responses:
+        200:
+          description: OK
+          schema:
+            type: object
+            properties:
+              text: 
+                type: string
+        400:
+          description: Error
+
+  /purchaseProduct:
+  
+    post:
+        operationId: purchaseProduct
+        summary: Purchase Product from E-Market
+        parameters:
+        - $ref: '#/parameters/product_id'
+        - $ref: '#/parameters/buyer_id'
+        responses:
+          200:
+            description: OK
+            schema:
+              type: object
+              properties:
+                text: 
+                  type: string
+          400:
+            description: Error
+
+  /{id}:
+
+    head:
+      operationId: exist
+      summary: Validate text's existance by ID
+      parameters:
+      - $ref: '#/parameters/id'
+      responses:
+        204:
+          description: Message Exists
+        400:
+          description: Parameter Mismatch
+        404:
+          description: Not Found
+
+
+    get:
+      operationId: read
+      summary: Read text by ID
+      parameters:
+      - $ref: '#/parameters/id'
+      responses:
+        200:
+          description: OK
+          schema:
+            type: object
+            properties:
+              text: 
+                type: string
+        400:
+          description: Parameter Mismatch
+        404:
+          description: Not Found
+
+
+    post:
+      operationId: create
+      summary: Creates a text by ID 
+      parameters:
+      - $ref: '#/parameters/id'
+      - $ref: '#/parameters/text'
+      responses:
+        201:
+          description: Text Created
+        400:
+          description: Parameter Mismatch
+        409:
+          description: Text Already Exists
+
+
+    put:
+      operationId: update
+      summary: Updates a text by ID 
+      parameters:
+      - $ref: '#/parameters/id'
+      - $ref: '#/parameters/text'
+      responses:
+        204:
+          description: Text Updated
+        400:
+          description: Parameter Mismatch
+        404:
+          description: Not Found
+
+
+    delete:
+      operationId: delete
+      summary: Delete text by ID
+      parameters:
+      - $ref: '#/parameters/id'
+      responses:
+        204:
+          description: Text Deleted
+        400:
+          description: Parameter Mismatch
+        404:
+          description: Not Found
+
+
+  /{id}/history:
+
+    get:
+      operationId: history
+      summary: Return history by ID
+      parameters:
+      - $ref: '#/parameters/id'
+      responses:
+        200:
+          description: OK
+          schema:
+            type: object
+            properties:
+              values:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    timestamp:
+                      type: string
+                    text:
+                      type: string
+        400:
+          description: Parameter Mismatch
+        404:
+          description: Not Found
+
+
+  /search/{wildcard}:
+
+    get:
+      operationId: search
+      summary: Find text by wildcard search in the text strings
+      description: Search for all matching IDs, given a (regex) value expression and return both the IDs and text. For example '^H.llo' will match any string starting with 'Hello' or 'Hallo'.
+      parameters:
+      - name: wildcard
+        in: path
+        description: Wildcard regular expression to match against texts
+        required: true
+        type: string
+        maxLength: 64
+      responses:
+        200:
+          description: OK
+          schema:
+            type: object
+            properties:
+              values:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: string
+                    text:
+                      type: string
+        400:
+          description: Parameter Mismatch
+

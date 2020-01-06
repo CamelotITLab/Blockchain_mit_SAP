@@ -1,0 +1,31 @@
+<!DOCTYPE HTML>
+<html>
+
+	<head>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta charset="UTF-8">
+
+		<title>MultiChain - Energy Market</title>
+		<script id="sap-ui-bootstrap"
+			src="https://sapui5.hana.ondemand.com/resources/sap-ui-core.js"
+			data-sap-ui-theme="sap_belize"
+			data-sap-ui-resourceroots='{"EnergyMarket": ""}'
+			data-sap-ui-compatVersion="edge"
+			data-sap-ui-oninit="module:sap/ui/core/ComponentSupport"
+			data-sap-ui-async="true"
+			data-sap-ui-frameOptions="trusted">
+		</script>
+		<script>
+			sap.ui.getCore().attachInit(function() {
+				app: new sap.ui.core.ComponentContainer({
+					height : "100%",
+					name : "EnergyMarket"
+				}).placeAt("content");
+			});
+		</script>
+	</head>
+
+	<body class="sapUiBody" id="content">
+	</body>
+
+</html>

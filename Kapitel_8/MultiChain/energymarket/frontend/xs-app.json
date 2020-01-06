@@ -1,0 +1,24 @@
+{
+  "welcomeFile": "/EnergyMarket-UI/index.html",
+  "authenticationMethod": "route",
+  "logout": {
+    "logoutEndpoint": "/do/logout"
+  },
+  "destinations": {
+	"middlewareApi": {
+	   "logoutPath": "/info/logout",
+ 	   "logoutMethod": "GET"
+	}
+  },
+  "routes": [
+	{
+      "source": "/middleware/(.*)",
+      "destination": "middlewareApi",
+      "csrfProtection": false
+    },{
+      "source": "^/EnergyMarket-UI/(.*)$",
+      "target": "$1",
+      "localDir": "webapp"
+    }
+   ]
+}

@@ -1,0 +1,136 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:f="sap.f" xmlns:l="sap.ui.layout"
+	controllerName="EnergyMarket.controller.EnergyMarket">
+	<App id="app">
+		<Page id="page" title="{i18n>appTitle}" class="sapUiContentPadding">
+			<headerContent>
+				<GenericTag id="account-balance" text="{i18n>accountBalance}" design="StatusIconHidden">
+					<ObjectNumber emphasized="true" number="{/accountBalance}" unit="{i18n>currency}"/>
+				</GenericTag>
+				<ActionSelect id="user-select" items="{ path: '/users/' }" change="changeCurrentUser">
+					<items>
+						<core:Item key="{userId}" text="{userName} ({userId})"/>
+					</items>
+				</ActionSelect>
+			</headerContent>
+			<content>
+				<l:ResponsiveSplitter>
+					<l:PaneContainer>
+						<!-- Marketplace -->
+						<l:SplitPane>
+							<l:layoutData><l:SplitterLayoutData size="60%" resizable="true"/></l:layoutData>
+							<Table id="marketplace" mode="SingleSelectLeft" selectionChange="onAppSelectionChange" noDataText="{i18n>noEntriesText}" growing="true"
+								items="{ path: '/marketplaceOffers/', sorter: { path: 'productName' } }">
+								<headerToolbar>
+									<Toolbar>
+										<ToolbarSpacer/>
+										<Title text="{i18n>marketplace}" level="H3"/>
+										<ToolbarSpacer/>
+										<Button text="{i18n>btnBuyOffer}" type="Accept" icon="sap-icon://credit-card" press="onBtnBuyOffer"/>
+									</Toolbar>
+								</headerToolbar>
+								<columns>
+									<Column hAlign="Center">
+										<Text text="{i18n>productName}"/>
+									</Column>
+									<Column hAlign="Center">
+										<Text text="{i18n>productDescription}"/>
+									</Column>
+									<Column hAlign="Center">
+										<Text text="{i18n>productPrice}"/>
+									</Column>
+									<Column hAlign="Center">
+										<Text text="{i18n>productOfferor}"/>
+									</Column>
+								</columns>
+								<items>
+									<ColumnListItem>
+										<cells>
+											<Text text="{productName}"/>
+											<Text text="{productDescription}"/>
+											<Text text="{productPrice}"/>
+											<Text text="{offerorId}"/>
+										</cells>
+									</ColumnListItem>
+								</items>
+							</Table>
+						</l:SplitPane>
+						<!-- My Offers -->
+						<l:SplitPane>
+							<l:layoutData><l:SplitterLayoutData size="40%" resizable="true"/></l:layoutData>
+							<VBox>
+								<Table class="sapUiLargeMarginBottom" id="my-offers" noDataText="{i18n>noEntriesText}" growing="true"
+									items="{ path: 'myOffersModel>/myOffers/', sorter: { path: 'productName' } }">
+									<headerToolbar>
+										<Toolbar>
+											<Title text="{i18n>offersFrom} {currentUserModel>/currentUser/userName}" level="H3"/>
+											<ToolbarSpacer/>
+											<Button text="{i18n>btnCreateOffer}" type="Accept" icon="sap-icon://add-product" press="openCreateOfferDialog"/>
+										</Toolbar>
+									</headerToolbar>
+									<columns>
+										<Column hAlign="Center">
+											<Text text="{i18n>productName}"/>
+										</Column>
+										<Column hAlign="Center">
+											<Text text="{i18n>productDescription}"/>
+										</Column>
+										<Column hAlign="Center">
+											<Text text="{i18n>productPrice}"/>
+										</Column>
+										<Column hAlign="Center">
+											<Text text="{i18n>productBuyer}"/>
+										</Column>
+									</columns>
+									<items>
+										<ColumnListItem>
+											<cells>
+												<Text text="{myOffersModel>productName}"/>
+												<Text text="{myOffersModel>productDescription}"/>
+												<Text text="{myOffersModel>productPrice}"/>
+												<Text text="{myOffersModel>buyerId}"/>
+											</cells>
+										</ColumnListItem>
+									</items>
+								</Table>
+								<!-- Bought Offers -->
+								<Table class="sapUiLargeMarginTop" id="bought-offers" noDataText="{i18n>noEntriesText}" growing="true"
+									items="{ path: 'boughtOffersModel>/boughtOffers/', sorter: { path: 'productName' } }">
+									<headerToolbar>
+										<Toolbar>
+											<Title text="{i18n>boughtOffersFrom} {currentUserModel>/currentUser/userName}" level="H3"/>
+											<ToolbarSpacer/>
+										</Toolbar>
+									</headerToolbar>
+									<columns>
+										<Column hAlign="Center">
+											<Text text="{i18n>productName}"/>
+										</Column>
+										<Column hAlign="Center">
+											<Text text="{i18n>productDescription}"/>
+										</Column>
+										<Column hAlign="Center">
+											<Text text="{i18n>productPrice}"/>
+										</Column>
+										<Column hAlign="Center">
+											<Text text="{i18n>productOfferor}"/>
+										</Column>
+									</columns>
+									<items>
+										<ColumnListItem>
+											<cells>
+												<Text text="{boughtOffersModel>productName}"/>
+												<Text text="{boughtOffersModel>productDescription}"/>
+												<Text text="{boughtOffersModel>productPrice}"/>
+												<Text text="{boughtOffersModel>offerorId}"/>
+											</cells>
+										</ColumnListItem>
+									</items>
+								</Table>
+							</VBox>
+						</l:SplitPane>
+					</l:PaneContainer>
+				</l:ResponsiveSplitter>
+			</content>
+		</Page>
+	</App>
+</mvc:View>

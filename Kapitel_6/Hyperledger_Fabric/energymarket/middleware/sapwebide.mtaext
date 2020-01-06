@@ -1,0 +1,12 @@
+<<<<<<< HEAD
+modules:
+  - name: di-local-npm-registry
+    properties:
+      UPSTREAM_LINK: "http://registry.npmjs.org"
+=======
+modules:
+  - name: di-local-npm-registry
+    properties:
+      UPSTREAM_LINK: "http://registry.npmjs.org"
+>>>>>>> aa2a2d90f0b22390ff6fd73bd4df7493eac18524
+      SAPUPSTREAM_LINK: "https://npm.sap.com"

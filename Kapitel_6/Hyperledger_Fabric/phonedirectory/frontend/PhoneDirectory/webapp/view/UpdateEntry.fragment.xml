@@ -1,0 +1,28 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc"
+	xmlns:html="http://www.w3.org/1999/xhtml" xmlns:l="sap.ui.layout" xmlns:com="sap.ui.commons">
+	<Dialog title="{i18n>updateEntryFormTitle}">
+		<l:Grid defaultSpan="L12 M12 S12" width="auto">
+			<l:content>
+				<f:SimpleForm minWidth="1024" maxContainerCols="2" editable="false" layout="ResponsiveGridLayout" labelSpanL="3" labelSpanM="3"
+					emptySpanL="4" emptySpanM="4" columnsL="2" columnsM="2">
+					<f:content>
+						<VBox>
+							<Label text="{i18n>firstName}" textAlign="Begin"/>
+							<Input value="{/entry/firstName}" class="sapUiSmallMarginBottom" type="Text" required="true"/>
+							<Label text="{i18n>lastName}" textAlign="Begin"/>
+							<Input value="{/entry/lastName}" class="sapUiSmallMarginBottom" type="Text" required="true"/>
+							<Label text="{i18n>address}" textAlign="Begin"/>
+							<Input value="{/entry/address}" class="sapUiSmallMarginBottom" type="Text" required="true"/>
+							<Label text="{i18n>phoneNumber}" textAlign="Begin"/>
+							<Input value="{/entry/phoneNumber}" class="sapUiSmallMarginBottom" type="Text" required="true"/>
+						</VBox>
+					</f:content>
+				</f:SimpleForm>
+			</l:content>
+		</l:Grid>
+		<buttons>
+			<Button text="{i18n>btnUpdate}" type="Accept" press="onBtnUpdateEntry"/>
+			<Button text="{i18n>btnCancel}" type="Reject" press="onBtnCancelUpdateEntry"/>
+		</buttons>
+	</Dialog>
+</core:FragmentDefinition>

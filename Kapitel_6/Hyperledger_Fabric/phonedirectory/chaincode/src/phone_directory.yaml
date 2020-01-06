@@ -1,0 +1,138 @@
+swagger: "2.0"
+
+info:
+  description: "Hypertrust Phone Directory"
+  version: "1.0"
+  title: "Phone Directory Management"
+
+consumes:
+  - application/x-www-form-urlencoded
+produces:
+  - application/json
+
+parameters:
+  contact_no: 
+      name: contact_no
+      in: formData
+      description: Contact Number
+      required: true
+      type: number
+  
+  first_name: 
+      name: first_name
+      in: formData
+      required: true
+      description: First Name
+      type: string
+      maxLength: 20
+
+  last_name: 
+      name: last_name
+      in: formData
+      required: true
+      description: Last Name
+      type: string
+      maxLength: 20
+
+  address: 
+      name: address
+      in: formData
+      required: false
+      description: address
+      type: string
+      maxLength: 64
+
+  query_string: 
+      name: query_string
+      in: path
+      description: query string
+      required: true
+      type: string
+      maxLength: 200
+
+  contact_key: 
+      name: contact_key
+      in: path
+      description: Unique contact key
+      required: true
+      type: string
+      maxLength: 100
+
+  operation_type: 
+      name: operation_type
+      in: formData
+      description: CRUD Operation Type
+      required: true
+      type: string
+      maxLength: 1
+
+  contact_key_2: 
+      name: contact_key_2
+      in: formData
+      description: Unique contact key
+      required: false
+      type: string
+      maxLength: 100
+
+
+paths:
+
+
+  /registerContact:
+  
+    post:
+        operationId: registerContact
+        summary: Track Contact Details
+        parameters:
+        - $ref: '#/parameters/contact_no'
+        - $ref: '#/parameters/first_name'
+        - $ref: '#/parameters/last_name'
+        - $ref: '#/parameters/address'
+        - $ref: '#/parameters/operation_type'
+        - $ref: '#/parameters/contact_key_2'
+        responses:
+          200:
+            description: OK
+            schema:
+              type: object
+              properties:
+                text: 
+                  type: string
+          400:
+            description: Error
+
+  /getContact/{query_string}:
+
+    get:
+      operationId: getContact
+      summary: Trace Contact Details
+      parameters:
+      - $ref: '#/parameters/query_string'
+      responses:
+        200:
+          description: OK
+          schema:
+            type: object
+            properties:
+              text: 
+                type: string
+        400:
+          description: Error
+
+  /getContactHistory/{contact_key}:
+
+    get:
+      operationId: getContactHistory
+      summary: Get History of contact
+      parameters:
+      - $ref: '#/parameters/contact_key'
+      responses:
+        200:
+          description: OK
+          schema:
+            type: object
+            properties:
+              text: 
+                type: string
+        400:
+          description: Error
